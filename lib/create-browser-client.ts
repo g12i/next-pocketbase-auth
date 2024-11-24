@@ -1,21 +1,20 @@
 import PocketBase from "pocketbase";
+import { clientAuthStore } from "./auth-store/client-auth-store";
+import { CookieOptions } from "./cookie-options";
 import { DEFAULT_API_URL } from "./constants";
-import { CookieAuthStore } from "./cookie-auth-store";
+
+let pbCache: PocketBase | undefined;
 
 export function createBrowserClient<T extends PocketBase = PocketBase>(
   baseUrl: string = process.env.NEXT_PUBLIC_PB_URL ?? DEFAULT_API_URL,
-  cookieOptions?: Cookies.CookieAttributes
+  lang?: string,
+  cookieOptions?: CookieOptions
 ): T {
-  const pb = new PocketBase(baseUrl);
+  if (pbCache) {
+    return pbCache as T;
+  }
 
-  pb.authStore = new CookieAuthStore({
-    httpOnly: false, // Must be false to allow client-side access
-    secure: process.env.NODE_ENV === "production", // Cookie only sent over HTTPS
-    sameSite: "strict", // Protects against CSRF attacks
-    path: "/", // Cookie accessible from all paths
-    expires: new Date(Date.now() + 1209600), // 14 days
-    ...cookieOptions,
-  });
+  pbCache = new PocketBase(baseUrl, clientAuthStore(cookieOptions), lang);
 
-  return pb as T;
+  return pbCache as T;
 }
