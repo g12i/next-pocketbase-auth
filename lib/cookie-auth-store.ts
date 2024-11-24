@@ -37,7 +37,7 @@ export class CookieAuthStore extends BaseAuthStore {
     Cookies.set(
       COOKIE_KEY,
       this.stringify({ token, model }),
-      this.cookieOptions
+      this.cookieOptions,
     );
 
     super.save(token, model);

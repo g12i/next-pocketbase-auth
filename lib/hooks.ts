@@ -13,22 +13,16 @@ export function usePocketBase<T extends PocketBase = PocketBase>() {
 export function useUser<
   T extends NonNullable<AuthModel> = NonNullable<AuthModel>,
 >() {
-  // Load from local storage
   const pb = usePocketBase();
   const [user, setUser] = useState<T | null>(pb.authStore.model as T);
-  console.log("🍋 pb.authStore.model", pb.authStore.model);
 
-  useEffect(() => {
-    const unsubscribe = pb.authStore.onChange((_, model) => {
-      console.log("🍤 token", _);
-      console.log("🦐 model", model);
-      setUser(model as T);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [pb.authStore]);
+  useEffect(
+    () =>
+      pb.authStore.onChange((_, model) => {
+        setUser(model as T);
+      }),
+    [pb.authStore]
+  );
 
   return user;
 }
