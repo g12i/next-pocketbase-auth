@@ -1,0 +1,64 @@
+{
+  "name": "next-pocketbase-auth",
+  "version": "1.0.2",
+  "description": "Generate TOTP and HOTP with browser's native Web Cryptography.",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/g12i/next-pocketbase-auth"
+  },
+  "homepage": "https://g12i.github.io/next-pocketbase-auth/",
+  "main": "./dist/next-pocketbase-auth.umd.js",
+  "module": "./dist/next-pocketbase-auth.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/next-pocketbase-auth.es.js",
+      "require": "./dist/next-pocketbase-auth.umd.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly"
+  },
+  "keywords": [
+    "totp",
+    "hotp",
+    "native",
+    "browser",
+    "client"
+  ],
+  "author": "Wojciech Grzebieniowski <grzebieniowski@gmail.com>",
+  "license": "ISC",
+  "peerDependencies": {
+    "next": "^15",
+    "pocketbase": "^0.21.5",
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^22.9.3",
+    "@types/react": "^18.3.12",
+    "eslint": "^9.15.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "globals": "^15.12.0",
+    "next": "^15.0.3",
+    "pocketbase": "^0.21.5",
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.15.0",
+    "vite": "^5.4.11"
+  },
+  "dependencies": {
+    "js-cookie": "^3.0.5"
+  }
+}
