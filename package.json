@@ -1,6 +1,6 @@
 {
   "name": "next-pocketbase-auth",
-  "version": "1.0.2",
+  "version": "0.0.1",
   "description": "Generate TOTP and HOTP with browser's native Web Cryptography.",
   "files": [
     "dist",
