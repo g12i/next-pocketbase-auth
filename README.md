@@ -128,7 +128,7 @@ export const config = {
 };
 ```
 
-### 4. Login Oage
+### 4. Login Page
 
 You can uses regular PocketBase's SDK authentication functions [see here](https://pocketbase.io/docs/authentication/), as long as you:
 
