@@ -31,9 +31,7 @@ export function serverAuthStore(
 function ignoreError(callback: () => void) {
   try {
     callback();
-  } catch (error) {
-    console.log("🔮 error", error);
-
+  } catch {
     // The `set` method was called from a Server Component.
     // This can be ignored if you have middleware refreshing
     // user sessions.
