@@ -1,7 +1,7 @@
 {
   "name": "next-pocketbase-auth",
   "version": "0.0.1",
-  "description": "Generate TOTP and HOTP with browser's native Web Cryptography.",
+  "description": "Wrapper for Next.js applications using PocketBase, with support for both client and server components",
   "files": [
     "dist",
     "README.md",
@@ -12,28 +12,41 @@
     "url": "https://github.com/g12i/next-pocketbase-auth"
   },
   "homepage": "https://g12i.github.io/next-pocketbase-auth/",
-  "main": "./dist/next-pocketbase-auth.umd.js",
-  "module": "./dist/next-pocketbase-auth.es.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/next-pocketbase-auth.es.js",
   "exports": {
     ".": {
       "import": "./dist/next-pocketbase-auth.es.js",
-      "require": "./dist/next-pocketbase-auth.umd.js",
+      "require": "./dist/next-pocketbase-auth.cjs",
       "types": "./dist/index.d.ts"
     }
   },
+  "type": "module",
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly"
   },
   "keywords": [
-    "totp",
-    "hotp",
-    "native",
-    "browser",
-    "client"
+    "nextjs",
+    "next",
+    "pocketbase",
+    "auth",
+    "authentication",
+    "server-components",
+    "client-components",
+    "typescript",
+    "react",
+    "middleware",
+    "session",
+    "cookies",
+    "oauth"
   ],
   "author": "Wojciech Grzebieniowski <grzebieniowski@gmail.com>",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/g12i/next-pocketbase-auth/issues"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
   "peerDependencies": {
     "next": "^15",
     "pocketbase": "^0.21.5",
