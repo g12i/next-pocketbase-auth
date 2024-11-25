@@ -27,7 +27,7 @@ export class SyncAuthStore extends BaseAuthStore {
         this.baseToken = parsed.token;
         this.baseModel = parsed.model ?? null;
       } catch {
-        // Do nothing
+        // Could not parse token
       }
     }
   }

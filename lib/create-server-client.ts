@@ -1,14 +1,10 @@
-import type { RequestCookies } from "next/dist/compiled/@edge-runtime/cookies";
-import type { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import PocketBase from "pocketbase";
 import { serverAuthStore } from "./auth-store/server-auth-store";
 import { DEFAULT_API_URL } from "./constants";
-import { CookieOptions } from "./cookie-options";
-
-type NextCookies = RequestCookies | ReadonlyRequestCookies;
+import { CookieOptions, CookiesAdapter } from "./types";
 
 export function createServerClient<T extends PocketBase = PocketBase>(
-  cookies: NextCookies,
+  cookies: CookiesAdapter,
   baseUrl: string = process.env.NEXT_PUBLIC_PB_URL ?? DEFAULT_API_URL,
   lang?: string,
   cookieOptions?: CookieOptions

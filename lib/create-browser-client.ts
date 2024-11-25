@@ -1,7 +1,7 @@
 import PocketBase from "pocketbase";
 import { clientAuthStore } from "./auth-store/client-auth-store";
-import { CookieOptions } from "./cookie-options";
 import { DEFAULT_API_URL } from "./constants";
+import { CookieOptions } from "./types";
 
 let pbCache: PocketBase | undefined;
 
