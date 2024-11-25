@@ -1,5 +1,7 @@
+import type { CookieAttributes } from "js-cookie";
+
 export type CookieOptions = Partial<
-  Omit<Cookies.CookieAttributes, "sameSite"> & {
+  Pick<Required<CookieAttributes>, "expires" | "path" | "domain" | "secure"> & {
     sameSite: "lax" | "strict" | "none";
   }
 >;
