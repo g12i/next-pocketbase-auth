@@ -8,6 +8,21 @@ A lightweight authentication wrapper for Next.js applications using PocketBase, 
 npm install next-pocketbase-auth
 ```
 
+
+## Security Considerations
+
+Don't rely solely on `pb.authStore.model` inside server code such as middleware. It isn't guaranteed to revalidate the Auth token.
+
+Always use `await pb.collection("users").authRefresh();` to protect pages and user data.
+
+Use following code to safely obtain information about the current user:
+
+```ts
+const pb = createServerClient(await cookies());
+
+const { record: user } = await pb.collection("users").authRefresh();
+```
+
 ## Setup Guide
 
 ### 1. Environment Variables
@@ -113,7 +128,7 @@ export const config = {
 };
 ```
 
-### 4. Login page
+### 4. Login Oage
 
 You can uses regular PocketBase's SDK authentication functions [see here](https://pocketbase.io/docs/authentication/), as long as you:
 
@@ -166,20 +181,6 @@ export default async function AccountPage() {
 
   return <p>Hello {result.record.name}</p>;
 }
-```
-
-## Security Considerations
-
-Don't rely solely on `pb.authStore.model` inside server code such as middleware. It isn't guaranteed to revalidate the Auth token.
-
-Always use `await pb.collection("users").authRefresh();` to protect pages and user data.
-
-Use following code to safely obtain information about the current user:
-
-```ts
-const pb = createServerClient(await cookies());
-
-const { record: user } = await pb.collection("users").authRefresh();
 ```
 
 ## Common Patterns
