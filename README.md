@@ -11,7 +11,7 @@ npm install next-pocketbase-auth
 
 ## Security Considerations
 
-Don't rely solely on `pb.authStore.model` inside server code such as middleware. It isn't guaranteed to revalidate the Auth token.
+Don't rely solely on `pb.authStore.record` inside server code such as middleware. It isn't guaranteed to revalidate the Auth token.
 
 Always use `await pb.collection("users").authRefresh();` to protect pages and user data.
 
@@ -104,7 +104,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // If we have a user, continue
-  if (pb.authStore.model) return response;
+  if (pb.authStore.record) return response;
 
   // If we are already on the login page, continue
   if (request.nextUrl.pathname === "/login") return response;
