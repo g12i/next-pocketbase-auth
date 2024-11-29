@@ -8,7 +8,6 @@ A lightweight authentication wrapper for Next.js applications using PocketBase, 
 npm install next-pocketbase-auth
 ```
 
-
 ## Security Considerations
 
 Don't rely solely on `pb.authStore.record` inside server code such as middleware. It isn't guaranteed to revalidate the Auth token.
@@ -94,13 +93,11 @@ export async function middleware(request: NextRequest) {
   });
 
   // If we have a valid token, refresh the token
-  if (pb.authStore.isValid) {
-    try {
-      await pb.collection("users").authRefresh();
-    } catch {
-      // If we can't refresh the token, clear the cookies
-      pb.authStore.clear();
-    }
+  try {
+    if (pb.authStore.isValid) await pb.collection("users").authRefresh();
+  } catch {
+    // If we can't refresh the token, clear the cookies
+    pb.authStore.clear();
   }
 
   // If we have a user, continue
@@ -211,13 +208,11 @@ export async function middleware(request: NextRequest) {
   });
 
   // If we have a valid token, refresh the token
-  if (pb.authStore.isValid) {
-    try {
-      await pb.collection("users").authRefresh();
-    } catch {
-      // If we can't refresh the token, clear the cookies
-      pb.authStore.clear();
-    }
+  try {
+    if (pb.authStore.isValid) await pb.collection("users").authRefresh();
+  } catch {
+    // If we can't refresh the token, clear the cookies
+    pb.authStore.clear();
   }
 
   return response;
