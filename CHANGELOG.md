@@ -7,15 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.1] - 2024-11-30
 
-
 ### Added
-- Automatic cookie expiration based on token expiration date
 
+- Automatic cookie expiration based on token expiration date
 
 ## [0.1.0] - 2024-11-29
 
 ### Changed
+
 - Updated to support `pocketbase` SDK version 0.22.0
 
-[0.1.1]: https://github.com/username/next-pocketbase-auth/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/username/next-pocketbase-auth/releases/tag/v0.1.0
+## [0.0.1] - 2024-11-25
+
+### Added
+
+- Initial release
+
+[0.1.1]: https://github.com/g12i/next-pocketbase-auth/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/g12i/next-pocketbase-auth/compare/v0.0.1...v0.1.0
+[0.0.1]: https://github.com/g12i/next-pocketbase-auth/releases/tag/v0.0.1
