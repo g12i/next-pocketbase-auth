@@ -1,4 +1,10 @@
-import { AuthModel, AuthRecord, BaseAuthStore } from "pocketbase";
+import {
+  AuthModel,
+  AuthRecord,
+  BaseAuthStore,
+  getTokenPayload,
+} from "pocketbase";
+import { CookieOptions } from "../types";
 
 type DTO = {
   token: string;
@@ -15,7 +21,7 @@ type DTO = {
       record: AuthRecord;
     }
 );
-type SaveFunction = (serialized: string) => void;
+type SaveFunction = (serialized: string, cookieOptions: CookieOptions) => void;
 type ClearFunction = () => void;
 
 export class SyncAuthStore extends BaseAuthStore {
@@ -51,13 +57,21 @@ export class SyncAuthStore extends BaseAuthStore {
 
     let stringified = "";
 
+    const cookieOptions: CookieOptions = {};
+
+    const payload = getTokenPayload(token);
+
+    if ("exp" in payload && typeof payload.exp === "number") {
+      cookieOptions.expires = new Date(payload.exp * 1000);
+    }
+
     try {
       stringified = stringify({ token, record: record ?? null });
     } catch {
       console.warn("SyncAuthStore: failed to stringify the new state");
     }
 
-    this.saveFunc(stringified);
+    this.saveFunc(stringified, cookieOptions);
   }
 
   /**

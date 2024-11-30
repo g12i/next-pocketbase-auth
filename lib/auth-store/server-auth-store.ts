@@ -13,9 +13,12 @@ export function serverAuthStore(
   } satisfies CookieOptions;
 
   return new SyncAuthStore({
-    save: (value) => {
+    save: (value, saveCookieOptions) => {
       ignoreError(() =>
-        cookies.set(COOKIE_KEY, value, cookieOptionsWithDefaults)
+        cookies.set(COOKIE_KEY, value, {
+          ...cookieOptionsWithDefaults,
+          ...saveCookieOptions,
+        })
       );
     },
     clear: () => {
