@@ -11,8 +11,11 @@ export function clientAuthStore(cookieOptions?: CookieOptions) {
   } satisfies CookieOptions;
 
   return new SyncAuthStore({
-    save: (value) => {
-      Cookies.set(COOKIE_KEY, value, cookieOptionsWithDefaults);
+    save: (value, saveCookieOptions) => {
+      Cookies.set(COOKIE_KEY, value, {
+        ...cookieOptionsWithDefaults,
+        ...saveCookieOptions,
+      });
     },
     clear: () => {
       Cookies.remove(COOKIE_KEY);
