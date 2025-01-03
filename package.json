@@ -1,6 +1,6 @@
 {
   "name": "next-pocketbase-auth",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Wrapper for Next.js applications using PocketBase, with support for both client and server components",
   "files": [
     "dist",
