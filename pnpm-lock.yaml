@@ -32,8 +32,8 @@ devDependencies:
     specifier: ^15.0.3
     version: 15.0.3(react-dom@18.3.1)(react@18.3.1)
   pocketbase:
-    specifier: ^0.22.1
-    version: 0.22.1
+    specifier: ^0.25.0
+    version: 0.25.0
   prettier:
     specifier: ^3.3.3
     version: 3.3.3
@@ -1591,8 +1591,8 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /pocketbase@0.22.1:
-    resolution: {integrity: sha512-hnzpDcIx5kbkUJXz6IkiTox6R4nb706u4rPSMy2FYCaI2OqBnFxbY0qwWBSqx1ERz/Xi61Uguf17Gb9bWZ8+kw==}
+  /pocketbase@0.25.0:
+    resolution: {integrity: sha512-xbjiQG/tnh2HsjZrTW7ZEJASvl4hmGAB5PQAmNRkRU8BmrPib7zwKyXdiYJl34QN7ADpqykZD2lAMdDtrrQbuw==}
     dev: true
 
   /postcss@8.4.31:
