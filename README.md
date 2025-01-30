@@ -29,7 +29,7 @@ const { record: user } = await pb.collection("users").authRefresh();
 Add your PocketBase URL to your environment variables:
 
 ```
-NEXT_PUBLIC_PB_URL=http://127.0.0.1:8090/api/
+NEXT_PUBLIC_PB_URL=http://127.0.0.1:8090/
 ```
 
 ### 2. Initialize PocketBase Clients
@@ -135,9 +135,12 @@ You can uses regular PocketBase's SDK authentication functions [see here](https:
 For example to login with GitHub:
 
 ```tsx
+import { createBrowserClient } from "next-pocketbase-auth";
+
 export function LoginForm(): React.ReactElement {
   const [submitError, setSubmitError] = useState<string>("");
   const router = useRouter();
+  const pb = createBrowserClient();
 
   const handleGitHubLogin = async () => {
     try {
